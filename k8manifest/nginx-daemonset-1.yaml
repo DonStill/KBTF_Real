@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-daemonset
+  namespace: web
+  labels:
+    function: mydaemonset
+spec:
+  selector:
+    matchLabels:
+      pod: daemonset-pod
+  template: 
+    metadata:
+      labels:
+        pod: daemonset-pod
+    spec:
+      nodeSelector: 
+        test: passed
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+          resources:
+            limits:
+              memory: "128Mi" ## megabyes, how much memory space allocated
+              cpu: "250m" ## how much cpu memory to allocate
+          ports:
+          - containerPort: 80
