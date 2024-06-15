@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-web
+provisioner: ebs.csi.aws.com #speciy provisioner that we're using to create our EBS volume
+parameters: 
+  type: gp2
+  fsType: xfs
+volumeBindingMode: WaitForFirstConsumer #specify the volume should be provisioned only when a pod using the pvc is scheduled

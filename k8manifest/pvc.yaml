@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: web-pvc
+  namespace: webns
+spec:
+  storageClassName: manual #match pv
+  accessModes:  
+    - ReadWriteOnce #match pv
+  resources:
+    requests: #request how much storeage is needed
+      storage: 8Gi
+
+
